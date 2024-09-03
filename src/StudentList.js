@@ -3,13 +3,14 @@ import axios from 'axios';
 import Layout from './Layout';
 import './StudentList.css';
 
+
 const StudentList = () => {
     const [students, setStudents] = useState([]);
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const studentsPerPage = 10;
+    const studentsPerPage = 10 ;
     const [selectedStudents, setSelectedStudents] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -70,11 +71,27 @@ const StudentList = () => {
     };
 
     return (
-        <div className="bg-gray-100 min-h-screen p-4">
-            <Layout onSearch={setSearchQuery} />
-            <div className="container mx-auto">
-                <h1 className="text-2xl font-bold text-gray-800 text-center my-6">Student List</h1>
-                <div className="overflow-x-auto">
+    <div className="sidespace" >
+       
+        <div className="packet">
+            <div className="header">
+                <Layout onSearch={setSearchQuery}/>
+            </div>
+             <div className="content">
+             <div class ="container">
+                <div className='itemone'>
+             <h1 className="left item1">Select school</h1>
+             <form className='item2'><select name="School-Name">
+             <option value="Big-Ben">Big Ben</option>
+                <option value="American-School">American school</option></select></form>
+                </div>
+            
+        <i class="fas fa-filter"></i>
+    
+             <button className="buttonright item3">+ Add Student</button>
+            </div>
+
+                <div className="table-container">
                     <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
                         <thead className="bg-indigo-600 text-white">
                             <tr>
@@ -124,30 +141,37 @@ const StudentList = () => {
                         </tbody>
                     </table>
                 </div>
-                <div class="pagination-wrapper">
-                <div className="pagination">
-                    <button
-                        onClick={prevPage}
-                        disabled={currentPage === 1}
-                    >
-                        Previous
-                    </button>
-                    <span style={{ color: 'black' }}>
-    <b className='span'>{currentPage}</b> 
-    <span className='span1' style={{ color: 'black' }}> of </span>
-    <b className='span'>{totalPages}</b>
-</span>
+                <div className="pagination-wrapper ">
+                    <div className="pagination center">
+                        <button onClick={prevPage} disabled={currentPage === 1}>
+                        &lt;
+                        </button>
+                        <button onClick={nextPage} disabled={currentPage === totalPages}>
+                        &gt;
+                        </button>
+                    
+                    </div>
+                    
+                    <div className="pagination right">
+                        
+                        <button onClick={prevPage} disabled={currentPage === 1}>
+                            Previous
+                        </button>
+                        <span style={{ color: 'black' }}>
+                                           <b>{currentPage}</b> of <b>{totalPages}</b>
+                                           </span>
 
-                    <button
-                        onClick={nextPage}
-                        disabled={currentPage === totalPages}
-                    >
-                        Next
-                    </button>
+                        <button onClick={nextPage} disabled={currentPage === totalPages}>
+                            Next
+                        </button>
+                    
+                    </div>
+                
                 </div>
             </div>
-            </div>
-        </div>
+
+         </div>
+    </div>
     );
 };
 

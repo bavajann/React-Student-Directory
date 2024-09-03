@@ -5,7 +5,8 @@ const Layout = ({ onSearch }) => {
   return (
     // <div className="content">
       <header>
-        <button className="button">Add Student</button>
+       <h1 className="text-2xl font-bold text-gray-800 text-center my-6">Students</h1>
+       <button className='studentsbutton'>500</button>
         <div className="ajustment input-container">
           <input
             type="text"
